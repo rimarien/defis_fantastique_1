@@ -1,6 +1,8 @@
 # Le sorcier de la montagne de Feu
 # NSI Mermoz 2019
 
+import random
+
 def paragraphe_rumeurs():
     texte=["Seul un aventurier téméraire entreprendrait une quête aussi périlleuse",
            "sans avoir préalablement essayé de savoir le plus de choses possibles",
@@ -91,10 +93,34 @@ def paragraphe_1():
         paragraphe_71()
 
 def paragraphe_71():
-    print("71 à faire")
+
+    # système de chance à améliorer
+    texte=["Le passage forme un virage à droite en direction du nord. Vous vous",
+           "approchez prudemment d'une guérite qui se trouve au coin et en jetant",
+           "un coup d'oeil à l'intérieur, vous apercevez une étrange créature qui",
+           "ressemble à un Lutin, vêtue d'une armure de cuir et endormie à son",
+           "poste. Vous essayez de passer devant sur la pointe des pieds."]
+
+    for loop in range(len(texte)):
+        print(texte[loop])
+
+    choix=random.randint(1,6)
+
+    if choix <=3:
+        print("Vous etes chanceux, le Lutin ne se réveille pas et continue à ronfler bruyamment.")
+        paragraphe_301()
+    else:
+        print("Vous etes malchanceux, vous faites en marchant un bruit qui le réveille, et ilouvre les yeux.")
+        paragraphe_248()        
+
+def paragraphe_248():
+    print("248 à faire")    
 
 def paragraphe_278():
     print("278 à faire")
+
+def paragraphe_301():
+    print("301 à faire")
     
 # run
 paragraphe_rumeurs()
