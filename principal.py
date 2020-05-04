@@ -46,12 +46,11 @@ def paragraphe_rumeurs():
     for loop in range(len(texte)):
         print(texte[loop])
 
-    print("ET maintenant, appuyer sur entrée pour continuer")
-
-    choix=input()
-    
+    choix=input("ET maintenant, appuyer sur entrée pour continuer")
+    print()
     paragraphe_1()
 
+# paragraphe 1
 def paragraphe_1():
     texte=["Vos deux jours de marche sont enfin terminés. Après avoir ôté votre",
            "épée de son fourreau, vous la déposez sur le sol et vous poussez un",
@@ -87,12 +86,15 @@ def paragraphe_1():
     
     choix=input("Entrez votre choix ouest ou est:")
 
+    print()
     if choix=="est":
         paragraphe_278()
     elif choix=="ouest":
         paragraphe_71()
 
+# paragraphe 71
 def paragraphe_71():
+    global chance # pour que chance du programme principal soit connu de cette procedure
 
     # système de chance à améliorer
     texte=["Le passage forme un virage à droite en direction du nord. Vous vous",
@@ -100,27 +102,82 @@ def paragraphe_71():
            "un coup d'oeil à l'intérieur, vous apercevez une étrange créature qui",
            "ressemble à un Lutin, vêtue d'une armure de cuir et endormie à son",
            "poste. Vous essayez de passer devant sur la pointe des pieds."]
-
     for loop in range(len(texte)):
         print(texte[loop])
 
-    choix=random.randint(1,6)
+    choix=random.randint(1,6)+random.randint(1,6)
+    if choix<=chance:
+        resultat=True
+    else:
+        resultat=False
+    chance=chance-1 
 
-    if choix <=3:
+    print()
+    if resultat:
         print("Vous etes chanceux, le Lutin ne se réveille pas et continue à ronfler bruyamment.")
         paragraphe_301()
     else:
-        print("Vous etes malchanceux, vous faites en marchant un bruit qui le réveille, et ilouvre les yeux.")
+        print("Vous etes malchanceux, vous faites en marchant un bruit qui le réveille, et il ouvre les yeux.")
         paragraphe_248()        
 
-def paragraphe_248():
-    print("248 à faire")    
+# paragraphe 92
+def paragraphe_92():
+    texte=["Vous êtes de retour au croisement. Vous regardez sur votre gauche vers",
+           "l'entrée de la caverne qui vous apparaît au lointain dans l'obscurité,",
+           "mais vous marchez droit devant vous."]
+    for loop in range(len(texte)):
+        print(texte[loop])
+        
+    choix=input("ET maintenant, appuyer sur entrée pour continuer")
+    print()
+    paragraphe_71()
+    
+# paragraphe 156
+def paragraphe_156():
+    print("156 à faire")
 
+# paragraphe 248
+def paragraphe_248():
+
+    # système de combat à inclure
+    texte=["La créature qui vient de s'éveiller est un FARFADET ! Il se met",
+           "péniblement debout, et attrape une corde qui doit probablement",
+           "actionner une sonnette d'alarme. Il vous faut l'attaquer vite.",
+           "FARFADET HABILETÉ: 6 ENDURANCE: 5"]
+    for loop in range(len(texte)):
+        print(texte[loop])
+        
+    print("Vous etes vainqueur, vous pouvez continuer votre chemin le long du passage.")
+    choix=input("Appuyer sur entrée pour continuer.") # pour faire une pause
+    print()
+    paragraphe_301()    
+
+# paragraphe 278
 def paragraphe_278():
-    print("278 à faire")
+
+    texte=["Le passage aboutit bientôt à une porte fermée à clé. Vous collez votre",
+           "oreille contre le panneau, mais vous n'entendez rien. Voulez-vous",
+           "essayer d'enfoncer la porte ? Vous préférez peut être rebrousser",
+           "chemin et retourner au croisement ?"]
+    
+    for loop in range(len(texte)):
+        print(texte[loop])
+
+    choix=input("Choisissez rebrousser ou enfoncer.")
+
+    print()
+    if choix=="enfoncer":
+        paragraphe_156()
+    elif choix=="rebrousser":
+        paragraphe_92()
 
 def paragraphe_301():
     print("301 à faire")
     
 # run
+chance=6+random.randint(1,6)
+print("Vous avez une chance de :",chance)
+print()
+# pour tester vite changer de place le #
+# paragraphe_71()
 paragraphe_rumeurs()
