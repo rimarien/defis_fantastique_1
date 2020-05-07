@@ -92,6 +92,10 @@ def paragraphe_1():
     elif choix=="ouest":
         paragraphe_71()
 
+# paragraphe 33
+def paragraphe_33():
+    print("33 à faire")
+
 # paragraphe 71
 def paragraphe_71():
     global chance # pour que chance du programme principal soit connu de cette procedure
@@ -120,6 +124,41 @@ def paragraphe_71():
         print("Vous etes malchanceux, vous faites en marchant un bruit qui le réveille, et il ouvre les yeux.")
         paragraphe_248()        
 
+# paragraphe 82
+def paragraphe_82():
+    global chance
+    texte=["La porte s'ouvre sur une petite pièce où règne une forte odeur. Au",
+           "milieu se trouve une table bancale sur laquelle est posée une bougie",
+           "allumée. Sous la table, il y a une petite boîte en bois. Une créature de",
+           "petite taille, à la silhouette trapue, le visage laid et couvert de verrues,",
+           "don sur une paillasse posée dans un coin, à l'autre bout de la pièce ;",
+           "c'est une créature semblable à celle que vous avez trouvée endormie",
+           "dans la guérite. C'est probablement le veilleur de nuit. Vous pouvez",
+           "choisir de regagner le couloir et de continuer vers le nord",
+           "ou de ramper sur le sol de la pièce pour essayer de vous",
+           "emparer de la boîte sans réveiller la créature."]
+    for loop in range(len(texte)):
+        print(texte[loop])
+
+    choix=input("Choisissez regagner ou tenter")
+
+    if choix=="regagner":
+        print("Vous décidez de regagner le couloir et continuer vers le Nord.")
+        paragraphe_208()
+
+    choix=random.randint(1,6)+random.randint(1,6)
+    if choix<=chance:
+        resultat=True
+    else:
+        resultat=False
+    chance=chance-1
+
+    if resultat:
+        print("La créature ne se réveille pas.")
+        paragraphe_147()
+    else:
+        paragraphe_33()
+
 # paragraphe 92
 def paragraphe_92():
     texte=["Vous êtes de retour au croisement. Vous regardez sur votre gauche vers",
@@ -131,10 +170,32 @@ def paragraphe_92():
     choix=input("ET maintenant, appuyer sur entrée pour continuer")
     print()
     paragraphe_71()
+
+# paragraphe 147
+def paragraphe_147():
+    print("147 à faire")
     
 # paragraphe 156
 def paragraphe_156():
-    print("156 à faire")
+    texte=["Vous essayez d'enfoncer la porte à coups d'épaule. Jetez deux dés. Si le",
+           "chiffre obtenu est égal ou inférieur au total de vos points d'HABILETÉ,",
+           "vous avez réussi et vous allez au 343. Si le chiffre obtenu est supérieur",
+           "à vos points d'HABILETÉ, vous frottez votre épaule endolorie et vous",
+           "décidez de ne pas faire de seconde tentative. Retournez à la bifurcation",
+           "en vous rendant au 92."]
+    for loop in range(len(texte)):
+        print(texte[loop])
+
+    print("156 à finir manque test d'habilité, pour l'instant random")
+    choix=random.randint(6)
+    if choix<=3:
+        print("Vous avez réussi !")
+        print()
+        paragraphe_343()
+    else:
+        print("Vous frottez votre épaule épaule endolorie et vous décidez de ne pas faire de seconde tentative. Vous retournez à la bifurcation.")
+        print()
+        paragraphe_92()
 
 # paragraphe 248
 def paragraphe_248():
@@ -171,13 +232,33 @@ def paragraphe_278():
     elif choix=="rebrousser":
         paragraphe_92()
 
+# paragraphe_301
 def paragraphe_301():
     print("301 à faire")
+
+# paragraphe_343
+def paragraphe_343():
+    texte=["La porte s'ouvre à la volée et vous tombez en avant, tête la première.",
+           "Vous avez soudain un coup au coeur en réalisant que vous ne tombez",
+           "pas sur le sol, mais dans une fosse. Par chance, celle-ci n'est pas très",
+           "profonde et vous atterrissez moins de deux mètres plus bas. Vous",
+           "perdez 1 point d'ENDURANCE en raison des contusions provoquées",
+           "par cette chute, vous vous hissez hors de la fosse, et vous sortez de la",
+           "pièce par la porte en prenant la direction de l'ouest. Rendez-vous au 92"]
+
+    for loop in range(len(texte)):
+        print(texte[loop])
+        
+    print("343 endurance à gerer pas fini")
+
+    choix=input("Pour continuer appuyer sur une touche")
+
+    paragraphe_92()    
     
 # run
 chance=6+random.randint(1,6)
 print("Vous avez une chance de :",chance)
 print()
 # pour tester vite changer de place le #
-# paragraphe_71()
-paragraphe_rumeurs()
+paragraphe_82()
+#paragraphe_rumeurs()
